@@ -10,8 +10,7 @@
     "#review": "ededed",
     "#wip": "ededed",
 
-    "#community contribution": "D4AF37",
-    "community contribution": null
+    "#community contribution": "D4AF37"
   },
   "projects": [
     "strongloop/strong-studio",
@@ -33,6 +32,9 @@
     "strongloop/loopback-component-storage",
     "strongloop/loopback-component-oauth2",
     "strongloop/loopback-example-gateway",
-    "strongloop/loopback-example-component"
+    "strongloop/loopback-example-component",
+    "strongloop/loopback-sdk-android",
+    "strongloop/loopback-example-angular-starter",
+    "strongloop/loopback-example-relation"
   ]
 }
