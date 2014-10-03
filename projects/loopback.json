@@ -10,10 +10,14 @@
     "#review": "ededed",
     "#wip": "ededed",
 
-    "#community contribution": "D4AF37",
-    "community contribution": null
+    "#community contribution": "D4AF37"
   },
-  "projects": [
+
+  "milestones": {
+    "#Rel studio 0.3.0 - Beta R3": "2014-10-07"
+  },
+
+  "repos": [
     "strongloop/strong-studio",
     "strongloop-internal/scrum-loopback",
     "strongloop/loopback",
@@ -33,6 +37,9 @@
     "strongloop/loopback-component-storage",
     "strongloop/loopback-component-oauth2",
     "strongloop/loopback-example-gateway",
-    "strongloop/loopback-example-component"
+    "strongloop/loopback-example-component",
+    "strongloop/loopback-sdk-android",
+    "strongloop/loopback-example-angular-starter",
+    "strongloop/loopback-example-relation"
   ]
 }
