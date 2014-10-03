@@ -3,9 +3,9 @@
 /*
  * Example usage:
  *
- *  $ sync-labels labels.json
+ *  $ sync config.json
  *
- * See loopback-labels.json for example configuration.
+ * See `projects/loopback.json` for an example configuration.
  */
 
 var fs = require('fs');
@@ -37,7 +37,7 @@ function printUsage() {
   console.log();
   console.log('Usage:')
   console.log();
-  console.log('    $ sync-label <config.json>');
+  console.log('    $ sync <config.json>');
   console.log();
   process.exit(1);
 }

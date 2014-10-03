@@ -12,7 +12,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
-    "sync-labels": "bin/sync-labels.js"
+    "sync": "bin/sync.js"
   },
   "author": "",
   "repository": {
