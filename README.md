@@ -37,6 +37,23 @@ repositories.
 }
 ```
 
+### milestones
+
+An object describing milestones shared by all github repositories. Milestone
+title is used as the key.
+
+Supported values:
+
+ - a string - the due date in the format `yyyy-mm-dd`
+ - `false` - the milestone is closed.
+
+```
+"milestones": {
+  "#Rel studio 0.3.0 - Beta R3": "2014-10-07",
+  "#Rel studio 0.2.0 - Beta R2": false
+}
+```
+
 ### repos
 
 An array of all repositories to synchronize.

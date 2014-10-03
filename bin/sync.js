@@ -21,9 +21,7 @@ if (!configFile) {
 var syncConfig = JSON.parse(fs.readFileSync(configFile));
 async.each(
   syncConfig.repos,
-  function(repo, next) {
-    syncRepositoryLabels(repo, syncConfig.labels, next);
-  },
+  syncRepository,
   function(err) {
     if (err) {
       console.error('\u001b[31m*** Failed ***\n', err, '\u001b[39m');
@@ -42,18 +40,40 @@ function printUsage() {
   process.exit(1);
 }
 
-function syncRepositoryLabels(repo, labelDefinitions, done) {
+function syncRepository(repo, done) {
   var segments = repo.split('/');
   var repoOwner = segments[0];
   var repoName = segments[1];
 
   if (!(repoOwner && repoName)) {
-    var msg = 'Invalid project `' + repo + '`:' +
-      ' does not match `owner/repo` format.';
+    var msg = 'Invalid repo `' + repo + '`:' +
+      ' does not match `owner/name` format.';
     return done(new Error(msg));
   }
 
   console.log('Syncing %s', repo);
+  async.series([
+    function(next) {
+      syncRepositoryLabels(
+        repoOwner, repoName,
+        syncConfig.labels,
+        next);
+    },
+    function(next) {
+      syncRepositoryMilestones(
+        repoOwner, repoName,
+        syncConfig.milestones,
+        next);
+    }
+  ], function(err) {
+    if (err) {
+      err.repo = repo;
+    }
+    done(err);
+  });
+}
+
+function syncRepositoryLabels(repoOwner, repoName, labelDefinitions, done) {
   github.issues.getLabels(
     {
       user: repoOwner,
@@ -61,7 +81,6 @@ function syncRepositoryLabels(repo, labelDefinitions, done) {
     }, function(err, existingLabels) {
       if (err) {
         err.action = 'issues.getLabels';
-        err.project = repo;
         return done(err);
       }
 
@@ -79,7 +98,6 @@ function syncRepositoryLabels(repo, labelDefinitions, done) {
             return function(err) {
               if (err) {
                 err.action = action;
-                err.project = repo;
                 err.labelName = labelName;
               }
               next(err);
@@ -89,7 +107,7 @@ function syncRepositoryLabels(repo, labelDefinitions, done) {
           if (!ghLabel.color) {
             // remove the label
             if (containsName(existingLabels, labelName)) {
-              console.log('delete %j', ghLabel);
+              console.log('delete label %j', ghLabel);
               github.issues.deleteLabel(ghLabel, cb('delete'));
             } else {
               next();
@@ -97,16 +115,101 @@ function syncRepositoryLabels(repo, labelDefinitions, done) {
           } else {
             // create/update the label
             if (containsName(existingLabels, labelName)) {
-              console.log('update %j', ghLabel);
+              console.log('update label %j', ghLabel);
               github.issues.updateLabel(ghLabel, cb('update'));
             } else {
-              console.log('create %j', ghLabel);
+              console.log('create label %j', ghLabel);
               github.issues.createLabel(ghLabel, cb('create'));
             }
           }
         },
         done);
     });
+}
+
+function syncRepositoryMilestones(repoOwner, repoName, milestoneDefs, done) {
+  github.issues.getAllMilestones({
+    user: repoOwner,
+    repo: repoName
+  }, function(err, githubMilestones) {
+    if (err) {
+      err.action = 'issues.getAllMilestones';
+      return done(err);
+    }
+
+    async.each(
+      Object.keys(milestoneDefs),
+      function(milestoneTitle, next) {
+        var definition = milestoneDefs[milestoneTitle];
+
+        var cb = function(action) {
+          return function(err) {
+            if (err) {
+              err.action = action;
+              err.milestoneTitle = milestoneTitle;
+            }
+            next(err);
+          };
+        };
+
+        var milestone = githubMilestones.filter(function(it) {
+          return it.title === milestoneTitle;
+        })[0];
+
+        if (milestone) {
+          milestone.user = repoOwner;
+          milestone.repo = repoName;
+
+          // remove properties not used by github-api
+          delete milestone.labels_url;
+          delete milestone.id;
+          delete milestone.url;
+          delete milestone.creator;
+          delete milestone.open_issues;
+          delete milestone.closed_issues;
+          delete milestone.created_at;
+          delete milestone.updated_at;
+        }
+
+        if (definition === false) {
+          if (milestone) {
+            if (milestone.state === 'open') {
+              console.log('close milestone %j', milestone);
+              milestone.state = 'closed';
+              github.issues.updateMilestone(milestone, cb('close'));
+            } else {
+              console.log('skip already closed milestone %j', milestone);
+              next();
+            }
+          } else {
+            console.log('do not create a closed milestone %j', milestone);
+            next();
+          }
+        } else {
+          var dueTs = definition + 'T07:00:00Z'; // Midnight pacific time
+          if (milestone) {
+            if (milestone.due_on.substr(0, definition.length) == definition) {
+              console.log('skip up-to-date milestone', milestone);
+              next();
+            } else {
+              milestone.due_on = dueTs;
+              console.log('update milestone', milestone);
+              github.issues.updateMilestone(milestone, cb('update'));
+            }
+          } else {
+            milestone = {
+              user: repoOwner,
+              repo: repoName,
+              title: milestoneTitle,
+              due_on: dueTs
+            };
+            console.log('create milestone', milestone);
+            github.issues.createMilestone(milestone, cb('create'));
+          }
+        }
+      },
+      done);
+  });
 }
 
 function containsName(list, name) {
