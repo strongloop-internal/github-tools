@@ -12,7 +12,7 @@
 
     "#community contribution": "D4AF37"
   },
-  "projects": [
+  "repos": [
     "strongloop/strong-studio",
     "strongloop-internal/scrum-loopback",
     "strongloop/loopback",

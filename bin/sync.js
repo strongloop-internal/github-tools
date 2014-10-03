@@ -20,9 +20,9 @@ if (!configFile) {
 
 var syncConfig = JSON.parse(fs.readFileSync(configFile));
 async.each(
-  syncConfig.projects,
-  function(project, next) {
-    syncProjectLabels(project, syncConfig.labels, next);
+  syncConfig.repos,
+  function(repo, next) {
+    syncRepositoryLabels(repo, syncConfig.labels, next);
   },
   function(err) {
     if (err) {
@@ -42,26 +42,26 @@ function printUsage() {
   process.exit(1);
 }
 
-function syncProjectLabels(project, labelDefinitions, done) {
-  var segments = project.split('/');
-  var owner = segments[0];
-  var repo = segments[1];
+function syncRepositoryLabels(repo, labelDefinitions, done) {
+  var segments = repo.split('/');
+  var repoOwner = segments[0];
+  var repoName = segments[1];
 
-  if (!(owner && repo)) {
-    var msg = 'Invalid project `' + project + '`:' +
+  if (!(repoOwner && repoName)) {
+    var msg = 'Invalid project `' + repo + '`:' +
       ' does not match `owner/repo` format.';
     return done(new Error(msg));
   }
 
-  console.log('Syncing %s', project);
+  console.log('Syncing %s', repo);
   github.issues.getLabels(
     {
-      user: owner,
-      repo: repo
+      user: repoOwner,
+      repo: repoName
     }, function(err, existingLabels) {
       if (err) {
         err.action = 'issues.getLabels';
-        err.project = project;
+        err.project = repo;
         return done(err);
       }
 
@@ -69,8 +69,8 @@ function syncProjectLabels(project, labelDefinitions, done) {
         Object.keys(labelDefinitions),
         function(labelName, next) {
           var ghLabel = {
-            user: owner,
-            repo: repo,
+            user: repoOwner,
+            repo: repoName,
             name: labelName,
             color: labelDefinitions[labelName]
           };
@@ -79,7 +79,7 @@ function syncProjectLabels(project, labelDefinitions, done) {
             return function(err) {
               if (err) {
                 err.action = action;
-                err.project = project;
+                err.project = repo;
                 err.labelName = labelName;
               }
               next(err);
