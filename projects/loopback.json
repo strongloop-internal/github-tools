@@ -39,6 +39,7 @@
     "strongloop/loopback-example-gateway",
     "strongloop/loopback-example-component",
     "strongloop/loopback-sdk-android",
+    "strongloop/loopback-example-full-stack",
     "strongloop/loopback-example-angular-starter",
     "strongloop/loopback-example-relation"
   ]
