@@ -51,7 +51,7 @@
     "strongloop/loopback-component-push",
     "strongloop/loopback-component-storage",
     "strongloop/loopback-component-oauth2",
-    "strongloop/loopback-example-gateway",
+    "strongloop/loopback-gateway",
     "strongloop/loopback-example-component",
     "strongloop/loopback-sdk-android",
     "strongloop/loopback-example-full-stack",
