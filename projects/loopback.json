@@ -22,15 +22,21 @@
   "repos": [
     "strongloop/strong-studio",
     "strongloop-internal/scrum-loopback",
+
     "strongloop/loopback",
     "strongloop/strong-remoting",
     "strongloop/loopback-boot",
     "strongloop/loopback-datasource-juggler",
-    "strongloop/loopback-workspace",
+    "strongloop/loopback-explorer",
+    "strongloop/loopback-testing",
+
     "strongloop/loopback-sdk-angular",
     "strongloop/loopback-sdk-angular-cli",
     "strongloop/grunt-loopback-sdk-angular",
 
+    "strongloop/loopback-sdk-android",
+
+    "strongloop/loopback-workspace",
     "strongloop/generator-loopback",
 
     "strongloop/loopback-connector",
@@ -45,17 +51,18 @@
     "strongloop/loopback-connector-jsonrpc",
     "strongloop/loopback-connector-atg",
 
-    "strongloop/loopback-explorer",
-    "strongloop/loopback-testing",
-    "strongloop/loopback-example-access-control",
     "strongloop/loopback-component-push",
     "strongloop/loopback-component-storage",
     "strongloop/loopback-component-oauth2",
     "strongloop/loopback-gateway",
+
+    "strongloop/loopback-example-access-control",
     "strongloop/loopback-example-component",
-    "strongloop/loopback-sdk-android",
     "strongloop/loopback-example-full-stack",
     "strongloop/loopback-example-angular-starter",
-    "strongloop/loopback-example-relation"
+    "strongloop/loopback-example-relation",
+
+    "strongloop-internal/strong-docs",
+    "strongloop-internal/apidocs.strongloop.com"
   ]
 }
