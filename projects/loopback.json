@@ -29,7 +29,6 @@
   "repos": [
     "strongloop/strong-studio",
     "strongloop-internal/scrum-loopback",
-
     "strongloop/loopback",
     "strongloop/strong-remoting",
     "strongloop/loopback-boot",
