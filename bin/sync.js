@@ -18,13 +18,18 @@ if (!configFile) {
   printUsage();
 }
 
+var errors = [];
+
 var syncConfig = JSON.parse(fs.readFileSync(configFile));
 async.each(
   syncConfig.repos,
   syncRepository,
   function(err) {
-    if (err) {
-      console.error('\u001b[31m*** Failed ***\n', err, '\u001b[39m');
+    if (err) errors.push(err);
+    if (errors.length) {
+      console.error('\u001b[31m*** Failed ***');
+      errors.forEach(function(e) { console.log(e); });
+      console.log('\u001b[39m');
     } else {
       console.log('Done.');
     }
@@ -48,7 +53,8 @@ function syncRepository(repo, done) {
   if (!(repoOwner && repoName)) {
     var msg = 'Invalid repo `' + repo + '`:' +
       ' does not match `owner/name` format.';
-    return done(new Error(msg));
+    errors.push(new Error(msg));
+    return done();
   }
 
   console.log('Syncing %s', repo);
@@ -68,8 +74,9 @@ function syncRepository(repo, done) {
   ], function(err) {
     if (err) {
       err.repo = repo;
+      errors.push(err);
     }
-    done(err);
+    done();
   });
 }
 
@@ -81,7 +88,8 @@ function syncRepositoryLabels(repoOwner, repoName, labelDefinitions, done) {
     }, function(err, existingLabels) {
       if (err) {
         err.action = 'issues.getLabels';
-        return done(err);
+        errors.push(err);
+        return done();
       }
 
       async.each(
@@ -97,10 +105,12 @@ function syncRepositoryLabels(repoOwner, repoName, labelDefinitions, done) {
           var cb = function(action) {
             return function(err) {
               if (err) {
+                err.repo = repoName;
                 err.action = action;
                 err.labelName = labelName;
+                errors.push(err);
               }
-              next(err);
+              next();
             };
           };
 
@@ -134,7 +144,8 @@ function syncRepositoryMilestones(repoOwner, repoName, milestoneDefs, done) {
   }, function(err, githubMilestones) {
     if (err) {
       err.action = 'issues.getAllMilestones';
-      return done(err);
+      errors.push(err);
+      return done();
     }
 
     async.each(
@@ -145,10 +156,12 @@ function syncRepositoryMilestones(repoOwner, repoName, milestoneDefs, done) {
         var cb = function(action) {
           return function(err) {
             if (err) {
+              err.repo = repoName;
               err.action = action;
               err.milestoneTitle = milestoneTitle;
+              errors.push(err);
             }
-            next(err);
+            next();
           };
         };
 
