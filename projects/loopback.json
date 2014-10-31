@@ -67,7 +67,7 @@
     "strongloop/loopback-example-component",
     "strongloop/loopback-example-full-stack",
     "strongloop/loopback-example-angular-starter",
-    "strongloop/loopback-example-relation",
+    "strongloop/loopback-example-relations-basic",
 
     "strongloop-internal/strong-docs",
     "strongloop-internal/apidocs.strongloop.com"
