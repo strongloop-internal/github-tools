@@ -83,6 +83,7 @@ function syncRepository(repo, done) {
 function syncRepositoryLabels(repoOwner, repoName, labelDefinitions, done) {
   github.issues.getLabels(
     {
+      per_page: 100,
       user: repoOwner,
       repo: repoName
     }, function(err, existingLabels) {
@@ -139,6 +140,7 @@ function syncRepositoryLabels(repoOwner, repoName, labelDefinitions, done) {
 
 function syncRepositoryMilestones(repoOwner, repoName, milestoneDefs, done) {
   github.issues.getAllMilestones({
+    per_page: 100,
     user: repoOwner,
     repo: repoName
   }, function(err, githubMilestones) {
