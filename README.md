@@ -7,6 +7,12 @@ $ git clone https://github.com/ritch/github-tools.git
 $ cd github-tools
 ```
 
+Create a .auth.json file in the directory you will run bin/sync from:
+
+```
+{ "username": "ghusername", "password": "ghpassword" }
+```
+
 ## sync
 
 Synchronize labels and milestones across multiple products.
