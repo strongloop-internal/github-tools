@@ -89,6 +89,7 @@ function syncRepositoryLabels(repoOwner, repoName, labelDefinitions, done) {
     }, function(err, existingLabels) {
       if (err) {
         err.action = 'issues.getLabels';
+        err.repo = repoName;
         errors.push(err);
         return done();
       }
@@ -146,6 +147,7 @@ function syncRepositoryMilestones(repoOwner, repoName, milestoneDefs, done) {
   }, function(err, githubMilestones) {
     if (err) {
       err.action = 'issues.getAllMilestones';
+      err.repo = repoName;
       errors.push(err);
       return done();
     }
