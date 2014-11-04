@@ -1,0 +1,51 @@
+{
+  "labels": {
+    "#fib-1": "006b75",
+    "#fib-2": "006b75",
+    "#fib-3": "006b75",
+    "#fib-5": "006b75",
+    "#fib-8": "006b75",
+    "#fib-13": "006b75",
+
+    "#review": "ededed",
+    "#wip": "ededed"
+  },
+
+  "milestones": {
+    "#Epic: fe metrics": ""
+  },
+
+  "repos": [
+    "strongloop-forks/node-syslog",
+    "strongloop-forks/statsd",
+    "strongloop/node-foreman",
+    "strongloop/strong-agent-statsd",
+    "strongloop/strong-build",
+    "strongloop/strongloop",
+    "strongloop/strong-cluster-connect-store",
+    "strongloop/strong-cluster-control",
+    "strongloop/strong-cluster-socket.io-store",
+    "strongloop/strong-cluster-tls-store",
+    "strongloop/strong-config-loader",
+    "strongloop/strong-control-channel",
+    "strongloop/strong-data-uri",
+    "strongloop/strong-deploy",
+    "strongloop/strong-install",
+    "strongloop/strong-license",
+    "strongloop/strong-log-transformer",
+    "strongloop/strong-mesh-models",
+    "strongloop/strong-module-loader",
+    "strongloop/strong-mq",
+    "strongloop/strongops",
+    "strongloop/strong-pm",
+    "strongloop/strong-registry",
+    "strongloop/strong-scheduler",
+    "strongloop/strong-service-install",
+    "strongloop/strong-service-upstart",
+    "strongloop/strong-statsd",
+    "strongloop/strong-store-cluster",
+    "strongloop/strong-supervisor",
+    "strongloop/strong-tools",
+    "strongloop/zone"
+  ]
+}
