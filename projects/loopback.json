@@ -40,6 +40,7 @@
     "strongloop/loopback-sdk-angular",
     "strongloop/loopback-sdk-angular-cli",
     "strongloop/grunt-loopback-sdk-angular",
+    "strongloop/gulp-loopback-sdk-angular",
 
     "strongloop/loopback-sdk-android",
 
