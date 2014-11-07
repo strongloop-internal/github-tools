@@ -89,6 +89,7 @@ function syncRepositoryLabels(repoOwner, repoName, labelDefinitions, done) {
     }, function(err, existingLabels) {
       if (err) {
         err.action = 'issues.getLabels';
+        err.repo = repoName;
         errors.push(err);
         return done();
       }
@@ -146,6 +147,7 @@ function syncRepositoryMilestones(repoOwner, repoName, milestoneDefs, done) {
   }, function(err, githubMilestones) {
     if (err) {
       err.action = 'issues.getAllMilestones';
+      err.repo = repoName;
       errors.push(err);
       return done();
     }
@@ -203,7 +205,7 @@ function syncRepositoryMilestones(repoOwner, repoName, milestoneDefs, done) {
         } else {
           var dueTs = definition + 'T07:00:00Z'; // Midnight pacific time
           if (milestone) {
-            if (milestone.due_on.substr(0, definition.length) == definition) {
+            if (milestone.due_on && milestone.due_on.substr(0, definition.length) == definition) {
               console.log('skip up-to-date milestone', milestone);
               next();
             } else {
