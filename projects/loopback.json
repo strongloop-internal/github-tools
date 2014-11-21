@@ -18,6 +18,7 @@
   },
 
   "milestones": {
+    "LoopBack 3.0": "2015-03-01",
     "#Rel: studio 0.3.0 - Beta R3": "2014-11-04",
     "#Epic: Metrics": "2014-12-01",
     "#Epic: Build and Deploy": "2014-11-10",
@@ -28,7 +29,7 @@
   },
 
   "repos": [
-    "strongloop/strong-studio",
+    "strongloop/strong-arc",
     "strongloop-internal/scrum-loopback",
     "strongloop/loopback",
     "strongloop/strong-remoting",
@@ -36,6 +37,7 @@
     "strongloop/loopback-datasource-juggler",
     "strongloop/loopback-explorer",
     "strongloop/loopback-testing",
+    "strongloop/loopback-phase",
 
     "strongloop/loopback-sdk-angular",
     "strongloop/loopback-sdk-angular-cli",
