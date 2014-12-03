@@ -25,10 +25,16 @@
     "#Epic: Profilers": "2014-11-10",
     "#Epic: Phases" : "2014-11-11",
     "#Epic: Components" : "2014-12-01",
-    "#Epic: Express Middleware Ordering": "2014-12-01"
+    "#Epic: Express Middleware Ordering": "2014-12-01",
+    "#Epic: Promise-fy": "",
+    "#Epic: IOjs": "",
+    "#Epic: Advisor": "2015-02-01",
+    "#Epic: Gateway V1": "2015-02-01",
+    "#Epic: Blip": ""
   },
 
   "repos": [
+    "strongloop/strong-gateway",
     "strongloop/strong-arc",
     "strongloop-internal/scrum-loopback",
     "strongloop/loopback",

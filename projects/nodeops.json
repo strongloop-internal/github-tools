@@ -12,11 +12,16 @@
   },
 
   "milestones": {
-    "#Epic: fe metrics": ""
+    "#Epic: fe metrics": "",
+    "#Epic: Promise-fy": "",
+    "#Epic: IOjs": "",
+    "#Epic: Advisor": "12-02-01",
+    "#Epic: Blip": ""
   },
 
   "repos": [
     "strongloop-forks/node-syslog",
+    "strongloop-internal/scrum-nodeops",
     "strongloop-forks/statsd",
     "strongloop/node-foreman",
     "strongloop/strong-agent-statsd",
