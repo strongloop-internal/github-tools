@@ -10,7 +10,10 @@
     "waiting": "F5ECCE",
     "doc": "d4c5f9",
     "Beginner Friendly": "00DD00",
+    "breaking-change": "f7c6c7",
     "metrics": "F5ECCE",
+    "refactor": "eb6420",
+    "security": "e11d21",
 
     "#review": "ededed",
     "#wip": "ededed",
