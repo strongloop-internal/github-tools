@@ -14,6 +14,7 @@
     "metrics": "F5ECCE",
     "refactor": "eb6420",
     "security": "e11d21",
+    "#bugbash": "e11d21",
 
     "#review": "ededed",
     "#wip": "ededed",
