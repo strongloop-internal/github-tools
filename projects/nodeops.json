@@ -20,6 +20,7 @@
   },
 
   "repos": [
+    "strongloop/github-reporting-tool",
     "strongloop-forks/node-syslog",
     "strongloop-internal/scrum-nodeops",
     "strongloop-forks/statsd",
