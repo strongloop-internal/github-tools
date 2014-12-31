@@ -8,15 +8,25 @@
     "#fib-13": "006b75",
 
     "#review": "ededed",
+    "waiting": "F5ECCE",
+    "doc": "d4c5f9",
     "#wip": "ededed"
   },
 
   "milestones": {
-    "#Epic: fe metrics": "",
+    "#DIMVP": null,
+    "#Epic: fe metrics": null,
     "#Epic: Promise-fy": "",
+    "#Epic: Promisefy": null,
     "#Epic: IOjs": "",
     "#Epic: Advisor": "12-02-01",
-    "#Epic: Blip": ""
+    "#Epic: Blip": "",
+    "#SchedulerMVP": "",
+    "#Traces": "",
+    "#CLA": "",
+    "#Build-Deploy-PM-Cleanup": "",
+    "#PM-QIP": "",
+    "SASS": null 
   },
 
   "repos": [
