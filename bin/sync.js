@@ -202,6 +202,8 @@ function syncRepositoryMilestones(repoOwner, repoName, milestoneDefs, done) {
             console.log('do not create a closed milestone %j', milestone);
             next();
           }
+        } else if(definition === null) {
+          github.issues.deleteMilestone(milestone, cb('delete'));
         } else {
           var dueTs = definition + 'T07:00:00Z'; // Midnight pacific time
           if (milestone) {
