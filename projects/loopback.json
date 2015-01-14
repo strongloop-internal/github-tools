@@ -45,7 +45,6 @@
     "strongloop/loopback-messaging",
     "strongloop/strong-gateway",
     "strongloop/strong-arc",
-    "strongloop/strong-zipmerge",
     "strongloop-internal/scrum-loopback",
     "strongloop/loopback",
     "strongloop/strong-remoting",
