@@ -24,6 +24,7 @@
 
   "milestones": {
     "LoopBack 3.0": "2015-03-01",
+    "Connector Refactor": "",
     "#Rel: studio 0.3.0 - Beta R3": "2014-11-04",
     "#Epic: Metrics": "2014-12-01",
     "#Epic: Build and Deploy": false,
