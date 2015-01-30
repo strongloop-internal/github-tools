@@ -44,7 +44,7 @@
   },
 
   "repos": [
-    "strongloop/loopback-socket-io",
+    "strongloop/loopback-messaging",
     "strongloop/strong-gateway",
     "strongloop/strong-arc",
     "strongloop-internal/scrum-loopback",
