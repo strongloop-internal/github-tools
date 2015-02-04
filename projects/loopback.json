@@ -26,7 +26,7 @@
   },
 
   "milestones": {
-    "LoopBack 3.0": "2015-03-01",
+    "LoopBack 3.0": "",
     "Connector Refactor": "",
     "#Rel: studio 0.3.0 - Beta R3": "2014-11-04",
     "API Analytics": "",
