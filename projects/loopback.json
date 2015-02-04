@@ -18,7 +18,7 @@
     "refactor": "eb6420",
     "security": "e11d21",
     "#bugbash": null,
-
+    "pre-test": "e11d21",
     "#review": "ededed",
     "#wip": "ededed",
 
