@@ -26,6 +26,7 @@
   },
 
   "milestones": {
+    "Entitlement": "",
     "LoopBack 3.0": "",
     "Connector Refactor": "",
     "#Rel: studio 0.3.0 - Beta R3": "2014-11-04",
