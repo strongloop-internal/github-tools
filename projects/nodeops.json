@@ -16,6 +16,7 @@
 
   "milestones": {
     "#Phoenix": null,
+    "#Multi-app": null,
     "#DIMVP": null,
     "#Epic: fe metrics": null,
     "#Epic: Promise-fy": "",
