@@ -28,6 +28,7 @@
   },
 
   "milestones": {
+    "#Traces": "",
     "Entitlement": "",
     "LoopBack 3.0": "",
     "Connector Refactor": "",
@@ -44,6 +45,7 @@
     "#Epic: IOjs": "",
     "#Epic: Advisor": "2015-02-01",
     "#Epic: Gateway V1": "2015-02-01",
+    "#Epic: Gateway": "",
     "#Epic: GoDaddy": "",
     "#Epic: Mini Mesh": "",
     "#Epic: Blip": ""
