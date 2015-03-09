@@ -26,14 +26,11 @@
   },
 
   "milestones": {
-    "Entitlement": "",
-    "LoopBack 3.0": "",
-    "Connector Refactor": "",
-    "#Rel: studio 0.3.0 - Beta R3": "2014-11-04",
-    "API Analytics": "",
+    "#Epic: Traces": "",
+    "#Epic: LoopBack 3.0": "",
+    "#Epic: Connector Refactor": "",
+    "#Epic: API Analytics": "",
     "#Epic: Metrics": "",
-    "#Epic: Build and Deploy": false,
-    "#Epic: Profilers": false,
     "#Epic: Phases" : "2014-11-11",
     "#Epic: Offline Sync V1": "",
     "#Epic: Components" : "2014-12-01",
@@ -41,7 +38,7 @@
     "#Epic: Promise-fy": "",
     "#Epic: IOjs": "",
     "#Epic: Advisor": "2015-02-01",
-    "#Epic: Gateway V1": "2015-02-01",
+    "#Epic: Gateway": "",
     "#Epic: GoDaddy": "",
     "#Epic: Mini Mesh": "",
     "#Epic: Blip": ""
