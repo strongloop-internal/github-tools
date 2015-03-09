@@ -7,8 +7,10 @@
     "#fib-8": "006b75",
     "#fib-13": "006b75",
 
+    "support": "3319E7",
     "waiting": "F5ECCE",
     "doc": "d4c5f9",
+    "examples": "d4c5f9",
     "Beginner Friendly": "00DD00",
     "breaking-change": "f7c6c7",
     "critical": "e11d21",
