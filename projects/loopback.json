@@ -28,6 +28,7 @@
   },
 
   "milestones": {
+    "#Epic: Entitlement": "",
     "#Epic: Traces": "",
     "#Epic: LoopBack 3.0": "",
     "#Epic: Connector Refactor": "",
