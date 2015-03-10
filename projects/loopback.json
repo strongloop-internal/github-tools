@@ -30,6 +30,7 @@
   "milestones": {
     "#Epic: Entitlement": "",
     "#Epic: Traces": "",
+    "#Traces": "",
     "#Epic: LoopBack 3.0": "",
     "#Epic: Connector Refactor": "",
     "#Epic: API Analytics": "",
@@ -42,6 +43,7 @@
     "#Epic: IOjs": "",
     "#Epic: Advisor": "2015-02-01",
     "#Epic: Gateway": "",
+    "#Epic: Gateway V1": "",
     "#Epic: GoDaddy": "",
     "#Epic: Mini Mesh": "",
     "#Epic: Blip": ""
