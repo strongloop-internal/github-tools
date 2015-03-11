@@ -8,10 +8,9 @@ var util = require('util');
 var _ = require('lodash');
 
 if (process.argv.length != 4) {
-  console.error('usage: githubtoken=<key> sl-github-report <orgfile> <sprint#>');
+  console.error('usage: reporttool <orgfile> <sprint#>');
   console.error('');
-  console.error('- key is your github API token, see the README');
-  console.error('- orgfile could be server/loopback.json, or your own config');
+  console.error('- orgfile could be projects/nodeops.json, or your own config');
   console.error('- sprint should be a number, like `61`');
   process.exit(1);
 }
