@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 var Sprint = require('../lib/sprint');
 var async = require('async');
 var debug = require('debug')('report');
@@ -7,17 +9,22 @@ var path = require('path');
 var util = require('util');
 var _ = require('lodash');
 
-if (process.argv.length != 4) {
-  console.error('usage: reporttool <orgfile> <sprint#>');
-  console.error('');
-  console.error('- orgfile could be projects/nodeops.json, or your own config');
-  console.error('- sprint should be a number, like `61`');
-  process.exit(1);
-}
+debug('current sprint: %s', Sprint.current());
 
 var orgFile = process.argv[2];
-var sprintNumber = Number(process.argv[3]);
+var sprintNumber = Number(process.argv[3]) || Sprint.current();
 var sprint = Sprint(sprintNumber);
+
+debug('org: %s', orgFile);
+debug('sprint: %s', sprint);
+
+if (!orgFile || !sprint) {
+  console.error('usage: report <orgfile> [sprint#]');
+  console.error('');
+  console.error('- orgfile: such as projects/nodeops.json');
+  console.error('- sprint: a number, like `61` (defaults to current sprint)');
+  process.exit(1);
+}
 
 console.log('start date: ' + sprint.start.format() + ', \nend date: ' + sprint.stop.format());
 try {
@@ -53,49 +60,49 @@ var repoMeta = {
 };
 
 var gitFetch = function(done){
-  var repoIndex = 0; 
+  var repoIndex = 0;
   var repoCount = orgMeta.repos.length;
   console.log('\nTotal ' + repoCount + ' repositories');
-  
+
   async.whilst(
     function () {
-    	return !git.rateLimit.isThrottled() && repoIndex < repoCount;
+      return !git.rateLimit.isThrottled() && repoIndex < repoCount;
     },
     function (callback) {
-	  console.log('\nFetching issues for ' + orgRepos[repoIndex][1]);
+    console.log('\nFetching issues for ' + orgRepos[repoIndex][1]);
       git.fetchGitIssues({
-		'username': orgRepos[repoIndex][0],
-		'repository': orgRepos[repoIndex][1],
-		'page': 1,
-		'startDate': sprint.start.format() }, 
-		callback);
-	    
-	  repoIndex++;
+    'username': orgRepos[repoIndex][0],
+    'repository': orgRepos[repoIndex][1],
+    'page': 1,
+    'startDate': sprint.start.format() },
+    callback);
+
+    repoIndex++;
     },
     function (err) {
       if(err){
-    	if(!repoIndex >= repoCount)
+      if(!repoIndex >= repoCount)
           console.log('Github ');
-    	console.error('err \n', err);
+      console.error('err \n', err);
       }
       else{
-    	console.log('Total issuse received ', _.flatten(git.allRepoIssues).length);
+      console.log('Total issuse received ', _.flatten(git.allRepoIssues).length);
         done();
       }
     }
-	);
+  );
 };
 
 var dataProcessing = function(callback){
-	console.log('\n Processing Data');
-	async.parallel([function(done){
-		processData.processMilestones({label: sprintLabel, sprint: sprint}, done);
-	}, function(done){
-		processData.processAssignees({label: sprintLabel, sprint: sprint}, done);
-	}],function (err, results) {
-		console.log('\nTotal ' + processData.totalIssuesResolved() + ' issues resovled for sprint ' + sprintNumber);
-		callback();
-	});
+  console.log('\n Processing Data');
+  async.parallel([function(done){
+    processData.processMilestones({label: sprintLabel, sprint: sprint}, done);
+  }, function(done){
+    processData.processAssignees({label: sprintLabel, sprint: sprint}, done);
+  }],function (err, results) {
+    console.log('\nTotal ' + processData.totalIssuesResolved() + ' issues resovled for sprint ' + sprintNumber);
+    callback();
+  });
 };
 
 operations.push(gitFetch);
