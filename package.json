@@ -1,23 +1,28 @@
 {
   "name": "gh-tools",
-  "version": "0.0.0",
-  "description": "",
-  "main": "index.js",
+  "version": "1.0.0",
+  "description": "github tools",
   "dependencies": {
+    "async": "~0.9.0",
+    "cli-table": "^0.3.1",
+    "debug": "^2.1.2",
     "github": "~0.2.2",
-    "async": "~0.9.0"
+    "lodash": "^3.5.0",
+    "moment-timezone": "^0.3.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "tap": "^0.7.1"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "tap test/test-*.js"
   },
   "bin": {
     "sync": "bin/sync.js"
   },
-  "author": "",
+  "author": "engineering@strongloop.com",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ritch/github-tools"
+    "url": "https://github.com/strongloop-internal/github-tools"
   },
   "license": "ISC"
 }
