@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 var Sprint = require('../lib/sprint');
 var async = require('async');
 var debug = require('debug')('report');
@@ -7,17 +9,22 @@ var path = require('path');
 var util = require('util');
 var _ = require('lodash');
 
-if (process.argv.length != 4) {
-  console.error('usage: reporttool <orgfile> <sprint#>');
-  console.error('');
-  console.error('- orgfile could be projects/nodeops.json, or your own config');
-  console.error('- sprint should be a number, like `61`');
-  process.exit(1);
-}
+debug('current sprint: %s', Sprint.current());
 
 var orgFile = process.argv[2];
-var sprintNumber = Number(process.argv[3]);
+var sprintNumber = Number(process.argv[3]) || Sprint.current();
 var sprint = Sprint(sprintNumber);
+
+debug('org: %s', orgFile);
+debug('sprint: %s', sprint);
+
+if (!orgFile || !sprint) {
+  console.error('usage: report <orgfile> [sprint#]');
+  console.error('');
+  console.error('- orgfile: such as projects/nodeops.json');
+  console.error('- sprint: a number, like `61` (defaults to current sprint)');
+  process.exit(1);
+}
 
 console.log('start date: ' + sprint.start.format() + ', \nend date: ' + sprint.stop.format());
 try {
