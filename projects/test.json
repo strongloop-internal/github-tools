@@ -1,0 +1,43 @@
+{
+  "labels": {
+    "#fib-1": "006b75",
+    "#fib-2": "006b75",
+    "#fib-3": "006b75",
+    "#fib-5": "006b75",
+    "#fib-8": "006b75",
+    "#fib-13": "006b75",
+
+    "support": "3319E7",
+    "#review": "ededed",
+    "waiting": "F5ECCE",
+    "doc": "d4c5f9",
+    "#wip": "ededed"
+  },
+
+  "milestones": {
+    "#Phoenix": null,
+    "#Multi-app": null,
+    "#DIMVP": null,
+    "#Epic: fe metrics": null,
+    "#Epic: Promise-fy": "",
+    "#Epic: Promiseify": null,
+    "#Epic: IOjs": "",
+    "#Epic: Advisor": "12-02-01",
+    "#Epic: Blip": "",
+    "#SchedulerMVP": "",
+    "#Traces": "",
+    "#CLA": "",
+    "#Build-Deploy-PM-Cleanup": "",
+    "#PM-QIP": "",
+    "#IBM-SL": "15-03-22",
+    "#Hosted Mesh": "",
+    "#Mini Mesh": "",
+    "#strong-pm.io": "",
+    "#Entitlement": "",
+    "SASS": null
+  },
+
+  "repos": [
+    "strongloop-internal/scrum-nodeops"
+  ]
+}
