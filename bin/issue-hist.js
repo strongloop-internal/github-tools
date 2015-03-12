@@ -6,6 +6,7 @@ var Sprint = require('../lib/sprint');
 var _ = require('lodash');
 var assert = require('assert');
 var async = require('async');
+var debug = require('debug')('github-tools:issue-hist');
 var github = require('../lib/create-client');
 
 
@@ -130,6 +131,9 @@ function getEvents(callback) {
 }
 
 function strip(issue) {
+  if (debug.enabled)
+    console.log('Issue:', issue);
+
   delete issue.meta;
   return JSON.parse(JSON.stringify(issue, replace));
 
