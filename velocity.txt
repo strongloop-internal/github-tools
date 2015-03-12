@@ -1,0 +1,52 @@
+user/repo, # -> issue
+user/repo, # -> events
+
+issue, events -> cur-sprint | nil
+
+pull_request not present if not a PR
+
+issue, events, cur-sprint -> {
+	pr: #
+	issue: #
+	open-pr: #,
+	open-issue: #
+	}
+
+(sprint, row, value)... -> { sprint#: [row,value]... } -> cli-table
+
+Input:
+
+- user/repo
+- user/repo/num
+- project.json (user/repo, ...)
+
+Output:
+
+- Issues
+
+
+Input:
+
+- Issues
+
+Output:
+
+- Issues+Events
+
+
+Input:
+
+- Issues+Events
+
+Output:
+
+- Issues+Events+Sprint#
+
+
+Input:
+
+- Issues+Events+Sprint#
+
+Output:
+
+
