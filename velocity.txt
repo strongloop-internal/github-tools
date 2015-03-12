@@ -1,0 +1,76 @@
+TODO:
+
+- some progress info...
+- server 504
+
+	sn.x/github-tools (report *) % node bin/velocity.js strongloop/strong-mesh-models
+
+	assert.js:326
+	assert.ifError = function(err) { if (err) {throw err;}};
+							 ^
+	504: Gateway Timeout
+	    at ClientRequest.<anonymous> (/home/sam/w/sn.x/github-tools/node_modules/github/index.js:802:26)
+	    at ClientRequest.emit (events.js:92:17)
+	    at Socket.emitTimeout (http.js:1802:10)
+	    at Socket.g (events.js:180:16)
+	    at Socket.emit (events.js:117:20)
+	    at Socket._onTimeout (net.js:327:8)
+	    at _makeTimerTimeout (timers.js:429:11)
+	    at Timer.unrefTimeout [as ontimeout] (timers.js:493:5)
+
+- implement: https://developer.github.com/v3/#conditional-requests
+  - will be much faster...
+  - and won't hit the rate limit
+
+user/repo, # -> issue
+user/repo, # -> events
+
+issue, events -> cur-sprint | nil
+
+pull_request not present if not a PR
+
+issue, events, cur-sprint -> {
+	pr: #
+	issue: #
+	open-pr: #,
+	open-issue: #
+	}
+
+(sprint, row, value)... -> { sprint#: [row,value]... } -> cli-table
+
+Input:
+
+- user/repo
+- user/repo/num
+- project.json (user/repo, ...)
+
+Output:
+
+- Issues
+
+
+Input:
+
+- Issues
+
+Output:
+
+- Issues+Events
+
+
+Input:
+
+- Issues+Events
+
+Output:
+
+- Issues+Events+Sprint#
+
+
+Input:
+
+- Issues+Events+Sprint#
+
+Output:
+
+
