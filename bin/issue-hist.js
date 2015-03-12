@@ -34,8 +34,8 @@ async.parallel({
   _.remove(events, function(e) {
     return e.event === 'renamed'
       || e.event === 'subscribed'
-      || e.event === 'assigned'
-      || e.event === 'unassigned'
+//    || e.event === 'assigned'
+//    || e.event === 'unassigned'
       || e.event === 'unlabeled'
       || e.event === 'milestoned'
       || e.event === 'mentioned';
