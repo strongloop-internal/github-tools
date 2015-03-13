@@ -3,6 +3,8 @@ TODO:
 - things that were started then rejected are not handled well:
   - ./bin/velocity.js strongloop/strong-pm/39
 
+- close sprint at midnight on the monday
+
 - server 504
 
 	sn.x/github-tools (report *) % node bin/velocity.js strongloop/strong-mesh-models
