@@ -185,7 +185,7 @@ function getRepoIssues(_repo, callback) {
       per_page : 100
     }, function(err, res) {
       if (err) {
-        console.error('%j: %j', repo, err);
+        console.error('repo %s: %j', _repo, err);
         err.repo = _repo;
         return callback(err);
       }
