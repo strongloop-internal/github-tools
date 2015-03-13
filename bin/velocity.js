@@ -10,6 +10,7 @@ var debug = require('debug')('github-tools:velocity');
 var fmt = require('util').format;
 var fs = require('fs');
 var github = require('../lib/create-client');
+var path = require('path');
 
 var HELP = 'usage: velocity <user>/<repo>[/<issue>] | <project.json>';
 
@@ -20,7 +21,7 @@ if (!from) {
   process.exit(1);
 }
 
-if (fs.exists(from))
+if (fs.existsSync(from))
   reportOnProject(from);
 else
   reportOnRepos([from]);
@@ -54,29 +55,108 @@ function reportOnRepos(repos) {
         });
       }, callback);
     },
-    // Fill in sprint numbers
-    function(issues, callback) {
-      issues = _.map(issues, cleanup);
-
-      if (debug.enabled)
-        console.log('clean issue:', issues[0]);
-
-      callback(null, issues);
-    },
-    // Fill _start and _stop
-    function(issues, callback) {
-      issues = _.map(issues, setSprint);
-      var started = _.compact(issues);
-      console.log('issues %d started %d', issues.length, started.length);
-      callback(null, started);
-    },
-  ], function(err, results) {
-    var urls = _.map(results, function(r) {
-      return fmt('%s/%s#%d sprint %s', r._user, r._repo, r.number, r._sprint);
-    });
-    console.log(urls);
+  ], function(err, issues) {
+    assert.ifError(err);
+    report(issues);
   });
+
 }
+
+function report(issues) {
+  var totalCount = issues.length;
+
+  console.log('Report on %d issues', totalCount);
+
+  // Fill in sprint numbers, and remove unused properties
+  issues = _.map(issues, cleanup);
+
+  if (debug.enabled)
+    console.log('clean issue:', issues[0]);
+
+  // Do sprint analysis
+  issues = _.map(issues, setSprint);
+
+  // Ignore issues that have not started
+  var inactive = _.remove(issues, function(i) { return i._start == null; });
+  var inactiveCount = inactive.length;
+
+  var lines = _.map(issues, reduce);
+
+  lines = _.flatten(lines);
+
+  //console.log(lines);
+
+  var data = _.reduce(lines, function(data, line) {
+    var sprint = line[0];
+    var category = line[1];
+    var count = line[2];
+
+    if (!data[sprint])
+      data[sprint] = {};
+
+    if (!data[sprint][category])
+      data[sprint][category] = count;
+    else
+      data[sprint][category] += count;
+
+    return data;
+  }, {});
+
+  console.log(data);
+}
+
+// Core reduction for analysis
+function reduce(i) {
+  var current = Sprint.current();
+  var sprint = i._sprint;
+  var start = i._start;
+  var done = i._done;
+  var lines = [];
+  var type;
+  var s;
+
+  if (!start) {
+    // Don't report on
+    return lines;
+  }
+
+  if (i.pull_request && i.pull_request.url) {
+    type = 'PR';
+  } else if(i.labels.indexOf('bug') >= 0) {
+    type = 'bug';
+  } else {
+    type = 'issue';
+  }
+
+  if (!done) {
+    // Incomplete in every sprint from when it started to now
+    for (s = start; s <= current; s++) {
+      line(s, 'incomplete'); // XXX should call it PR/issue/bug
+    }
+
+    return lines;
+  }
+
+  // We are left with only issues that started, and are done
+
+  // Incomplete in every sprint until it was done
+  for (s = start; s < done; s++) {
+    line(s, 'incomplete'); // XXX should call it PR/issue/bug
+  }
+
+  line(done, 'complete');
+
+  return lines;
+
+  function line(sprint, category, count) {
+    if (count == null)
+      count = 1;
+
+    lines.push([sprint, category, count]);
+    lines.push([sprint, category + ': ' + type, count]);
+  }
+}
+
 
 function getRepoIssues(_repo, callback) {
   debug('get issues for %j', _repo);
@@ -106,7 +186,7 @@ function getRepoIssues(_repo, callback) {
     }, function(err, res) {
       if (err) {
         console.error('%j: %j', repo, err);
-        err.repo = repo.join('/');
+        err.repo = _repo;
         return callback(err);
       }
       issues.push(res);
@@ -155,7 +235,7 @@ function cleanup(issue) {
   return JSON.parse(JSON.stringify(issue, replace));
 
   function replace(key, value) {
-    if (/.*url$/.test(key))
+    if (/.*_url$/.test(key))
       return undefined;
     if (/.*id/.test(key))
       return undefined;
@@ -210,16 +290,18 @@ function setSprint(issue) {
         done);
 
   if (!start)
-    return;
+    return issue;
 
-  if (!done)
-    done = Sprint.current();
-
-  issue._sprint = num(done);
   issue._start = num(start);
+  issue._done = num(done);
+  issue._sprint = num(done || Sprint.current());
 
+  // We have two kinds of sprint labels, match them both:
+  // - #sprint64
+  // - sprint#65
   function num(sprint) {
-    return sprint.split('#').pop();
+    if (sprint)
+      return /\d+$/.exec(sprint).pop();
   }
 
   return issue;
