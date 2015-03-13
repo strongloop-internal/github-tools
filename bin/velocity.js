@@ -29,22 +29,20 @@ function build(err, issues) {
 
   var totalCount = issues.length;
 
-  console.log('Report on %d issues', totalCount);
-
   // Ignore issues that have not started
-  var inactive = _.remove(issues, function(i) { return i._start == null; });
-  var inactiveCount = inactive.length;
+  var inactiveCount = _.reduce(issues, function(count, i) {
+    return count + (i._start == null ? 1 : 0);
+  }, 0);
 
   console.log('Backlogged issues: %d', inactiveCount);
+
+  console.log('Report on %d issues', totalCount);
 
   var lines = _.map(issues, count);
 
   lines = _.flatten(lines);
 
   var graph = _.reduce(lines,  reduce, {});
-
-  if (issues.length <= 1)
-    console.log('Issue:', issues[0]);
 
   console.log(util.inspect(graph, {depth: null, colors: false}));
 
