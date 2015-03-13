@@ -38,6 +38,9 @@ function build(err, issues) {
 
   console.log('Report on %d issues', totalCount);
 
+  if (issues.length === 1)
+    console.log(util.inspect(issues[0], {depth: null}));
+
   var lines = _.map(issues, count);
 
   lines = _.flatten(lines);
@@ -57,6 +60,7 @@ function count(i) {
   var sprint = i._sprint;
   var start = i._start;
   var done = i._done;
+  var rejected = i._rejected;
   var lines = [];
   var type;
   var s;
@@ -87,12 +91,19 @@ function count(i) {
   // Issues have:
   // - start: the first sprint they were out of backlog
   // - done: the first sprint they were `#tbr` or Closed
+  // - rejected: the first sprint a currently backlogged item was scheduled in
+  //
   //
   // Valid combinations of (start,done):
   //
   // (null, null): not started
   // (#, null): in-progress
   // (#, #): finished
+
+  if (rejected) {
+    line(rejected, 'rejected');
+    return lines;
+  }
 
   // Not started - ignore.
   if (!start) {
