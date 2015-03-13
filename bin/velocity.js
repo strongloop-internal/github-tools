@@ -80,13 +80,13 @@ function report(issues) {
   var inactive = _.remove(issues, function(i) { return i._start == null; });
   var inactiveCount = inactive.length;
 
-  var lines = _.map(issues, reduce);
+  var lines = _.map(issues, count);
 
   lines = _.flatten(lines);
 
   //console.log(lines);
 
-  var data = _.reduce(lines, function(data, line) {
+  var graph = _.reduce(lines, function(data, line) {
     var sprint = line[0];
     var category = line[1];
     var count = line[2];
@@ -102,11 +102,14 @@ function report(issues) {
     return data;
   }, {});
 
-  console.log(data);
+  console.log(graph);
+
+  console.log('incomplete: started or in-progess in this sprint, but not done');
+  console.log('complete: done in this sprint');
 }
 
 // Core reduction for analysis
-function reduce(i) {
+function count(i) {
   var current = Sprint.current();
   var sprint = i._sprint;
   var start = i._start;
@@ -115,11 +118,20 @@ function reduce(i) {
   var type;
   var s;
 
-  if (!start) {
-    // Don't report on
-    return lines;
-  }
-
+  // Classify the issue type for reporting purposes:
+  //
+  // XXX more work could be done here:
+  //
+  // - internal vs external
+  //
+  // - collab vs non-collab
+  //
+  // - committed backlog (has an effort estimate) vs 'other'
+  //
+  // - PRs should have their 'description'/body searched for a 'connected to'
+  // link. If they are connected to something else, particularly to a comitted
+  // backlog item, we should either not report them, or report them in a
+  // category different from 'other' PRs
   if (i.pull_request && i.pull_request.url) {
     type = 'PR';
   } else if(i.labels.indexOf('bug') >= 0) {
@@ -128,20 +140,36 @@ function reduce(i) {
     type = 'issue';
   }
 
+
+  // Issues have:
+  // - start: the first sprint they were out of backlog
+  // - done: the first sprint they were `#tbr` or Closed
+  //
+  // Valid combinations of (start,done):
+  //
+  // (null, null): not started
+  // (#, null): in-progress
+  // (#, #): finished
+
+  // Not started - ignore.
+  if (!start) {
+    return lines;
+  }
+
+  // In-progress: incomplete in every sprint from their start sprint to the
+  // current sprint
   if (!done) {
-    // Incomplete in every sprint from when it started to now
     for (s = start; s <= current; s++) {
-      line(s, 'incomplete'); // XXX should call it PR/issue/bug
+      line(s, 'incomplete');
     }
 
     return lines;
   }
 
-  // We are left with only issues that started, and are done
-
-  // Incomplete in every sprint until it was done
+  // Finished: incomplete in every sprint up until the sprint in which it was
+  // done
   for (s = start; s < done; s++) {
-    line(s, 'incomplete'); // XXX should call it PR/issue/bug
+    line(s, 'incomplete');
   }
 
   line(done, 'complete');
@@ -153,7 +181,7 @@ function reduce(i) {
       count = 1;
 
     lines.push([sprint, category, count]);
-    lines.push([sprint, category + ': ' + type, count]);
+    lines.push([sprint, category + ': ' + type, count, i]);
   }
 }
 
@@ -180,7 +208,7 @@ function getRepoIssues(_repo, callback) {
       user: user,
       repo: repo,
       state: 'all',
-      since: '2015-01-01', // FIXME '2014-11-01',
+      since: '2014-11-01',
       page: page,
       per_page : 100
     }, function(err, res) {
@@ -214,6 +242,7 @@ function getRepoIssues(_repo, callback) {
       _.each(issues, function(i) {
         i._user = user;
         i._repo = repo;
+        i._id = repo + '#' + i.number;
       });
 
       return callback(null, issues);
