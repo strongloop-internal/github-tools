@@ -43,6 +43,9 @@ function build(err, issues) {
 
   var graph = _.reduce(lines,  reduce, {});
 
+  if (issues.length <= 1)
+    console.log('Issue:', issues[0]);
+
   console.log(util.inspect(graph, {depth: null, colors: false}));
 
   console.log('');
