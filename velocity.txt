@@ -1,6 +1,8 @@
 TODO:
 
-- some progress info...
+- things that were started then rejected are not handled well:
+  - ./bin/velocity.js strongloop/strong-pm/39
+
 - server 504
 
 	sn.x/github-tools (report *) % node bin/velocity.js strongloop/strong-mesh-models
