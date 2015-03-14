@@ -8,6 +8,7 @@ var assert = require('assert');
 var debug = require('debug')('github-tools:velocity');
 var fs = require('fs');
 var report = require('../lib/report');
+var Table = require('cli-table');
 var util = require('util');
 
 var HELP = 'usage: velocity <user>/<repo>[/<issue>] | <project.json>';
@@ -29,15 +30,6 @@ function build(err, issues) {
 
   var totalCount = issues.length;
 
-  // Ignore issues that have not started
-  var inactiveCount = _.reduce(issues, function(count, i) {
-    return count + (i._start == null ? 1 : 0);
-  }, 0);
-
-  console.log('Backlogged issues: %d', inactiveCount);
-
-  console.log('Report on %d issues', totalCount);
-
   if (issues.length === 1)
     console.log(util.inspect(issues[0], {depth: null}));
 
@@ -47,17 +39,66 @@ function build(err, issues) {
 
   var graph = _.reduce(lines,  reduce, {});
 
-  console.log(util.inspect(graph, {depth: null, colors: false}));
+  if (debug.enabled)
+    console.log(util.inspect(graph, {depth: null, colors: false}));
+
+  console.log('Report on %d total issues', totalCount);
+
+  Object.keys(graph).sort().forEach(function(sprint) {
+    console.log('Sprint: %d', sprint);
+    Object.keys(graph[sprint]).sort().forEach(function(category) {
+      var c = graph[sprint][category];
+      console.log('    %s: %d', category, c.count);
+      Object.keys(c).sort().forEach(function(repo) {
+        if (repo === 'count') return;
+        console.log('        %s: %j', repo, c[repo]);
+      });
+    });
+  });
 
   console.log('');
-  console.log('incomplete: started or in-progess in this sprint, but not done');
+  console.log('incomplete: committed in this sprint, but not done');
   console.log('complete: done in this sprint');
+  console.log('rejected: committed in this sprint, but re-backlogged');
+
+  var categories = Object.keys(_.reduce(lines, function(data, line) {
+    var category = line[1];
+    //category = category.replace('omplete', '');
+    data[category] = true;
+    return data;
+  }, {})).sort();
+  var headings = ['sprint'].concat(categories);
+  var table = new Table({
+    head: headings.map(function(v) {
+      return v
+        .replace('omplete', '')
+        .replace('ected', '')
+        .replace('inc, ', '')
+        .replace('c, ', '');
+    }),
+  });
+
+  Object.keys(graph).sort().forEach(function(sprint) {
+    var s = graph[sprint];
+    //console.log(s);
+    var row = _.map(headings, function(column) {
+      //console.log('c %s %j', column, s[column]);
+      if (column === 'sprint')
+        return sprint;
+      if (s[column] && s[column].count)
+        return s[column].count;
+      return '';
+    });
+    //console.log('r', row);
+    table.push(row);
+  });
+
+  console.log(table.toString());
 }
 
 // Core reduction for analysis
 function count(i) {
   var current = Sprint.current();
-  var sprint = i._sprint;
   var start = i._start;
   var done = i._done;
   var rejected = i._rejected;
@@ -135,7 +176,7 @@ function count(i) {
       count = 1;
 
     lines.push([sprint, category, count]);
-    lines.push([sprint, category + ': ' + type, count, i]);
+    lines.push([sprint, category + ', ' + type, count, i]);
   }
 }
 
