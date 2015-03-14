@@ -3,6 +3,9 @@ TODO:
 - things that were started then rejected are not handled well:
   - ./bin/velocity.js strongloop/strong-pm/39
 
+- rejected... but then closed because it was completed by side-effect:
+  - ./bin/velocity.js strongloop-internal/scrum-nodeops/106
+
 - close sprint at midnight on the monday
 
 - server 504
