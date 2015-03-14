@@ -8,6 +8,7 @@ var assert = require('assert');
 var debug = require('debug')('github-tools:velocity');
 var fs = require('fs');
 var report = require('../lib/report');
+var Table = require('cli-table');
 var util = require('util');
 
 var HELP = 'usage: velocity <user>/<repo>[/<issue>] | <project.json>';
@@ -59,6 +60,40 @@ function build(err, issues) {
   console.log('incomplete: committed in this sprint, but not done');
   console.log('complete: done in this sprint');
   console.log('rejected: committed in this sprint, but re-backlogged');
+
+  var categories = Object.keys(_.reduce(lines, function(data, line) {
+    var category = line[1];
+    //category = category.replace('omplete', '');
+    data[category] = true;
+    return data;
+  }, {})).sort();
+  var headings = ['sprint'].concat(categories);
+  var table = new Table({
+    head: headings.map(function(v) {
+      return v
+        .replace('omplete', '')
+        .replace('ected', '')
+        .replace('inc, ', '')
+        .replace('c, ', '');
+    }),
+  });
+
+  Object.keys(graph).sort().forEach(function(sprint) {
+    var s = graph[sprint];
+    //console.log(s);
+    var row = _.map(headings, function(column) {
+      //console.log('c %s %j', column, s[column]);
+      if (column === 'sprint')
+        return sprint;
+      if (s[column] && s[column].count)
+        return s[column].count;
+      return '';
+    });
+    //console.log('r', row);
+    table.push(row);
+  });
+
+  console.log(table.toString());
 }
 
 // Core reduction for analysis
