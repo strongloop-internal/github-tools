@@ -29,13 +29,6 @@ function build(err, issues) {
 
   var totalCount = issues.length;
 
-  // Ignore issues that have not started
-  var inactiveCount = _.reduce(issues, function(count, i) {
-    return count + (i._start == null ? 1 : 0);
-  }, 0);
-
-  console.log('Backlogged issues: %d', inactiveCount);
-
   console.log('Report on %d issues', totalCount);
 
   if (issues.length === 1)
@@ -57,7 +50,6 @@ function build(err, issues) {
 // Core reduction for analysis
 function count(i) {
   var current = Sprint.current();
-  var sprint = i._sprint;
   var start = i._start;
   var done = i._done;
   var rejected = i._rejected;
