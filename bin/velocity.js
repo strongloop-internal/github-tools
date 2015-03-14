@@ -29,8 +29,6 @@ function build(err, issues) {
 
   var totalCount = issues.length;
 
-  console.log('Report on %d issues', totalCount);
-
   if (issues.length === 1)
     console.log(util.inspect(issues[0], {depth: null}));
 
@@ -40,11 +38,27 @@ function build(err, issues) {
 
   var graph = _.reduce(lines,  reduce, {});
 
-  console.log(util.inspect(graph, {depth: null, colors: false}));
+  if (debug.enabled)
+    console.log(util.inspect(graph, {depth: null, colors: false}));
+
+  console.log('Report on %d total issues', totalCount);
+
+  Object.keys(graph).sort().forEach(function(sprint) {
+    console.log('Sprint: %d', sprint);
+    Object.keys(graph[sprint]).sort().forEach(function(category) {
+      var c = graph[sprint][category];
+      console.log('    %s: %d', category, c.count);
+      Object.keys(c).sort().forEach(function(repo) {
+        if (repo === 'count') return;
+        console.log('        %s: %j', repo, c[repo]);
+      });
+    });
+  });
 
   console.log('');
-  console.log('incomplete: started or in-progess in this sprint, but not done');
+  console.log('incomplete: committed in this sprint, but not done');
   console.log('complete: done in this sprint');
+  console.log('rejected: committed in this sprint, but re-backlogged');
 }
 
 // Core reduction for analysis
@@ -127,7 +141,7 @@ function count(i) {
       count = 1;
 
     lines.push([sprint, category, count]);
-    lines.push([sprint, category + ': ' + type, count, i]);
+    lines.push([sprint, category + ', ' + type, count, i]);
   }
 }
 
