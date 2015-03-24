@@ -1,4 +1,6 @@
 *.log
 .auth.json
+_cache.db
 all*.json
 node_modules/
+npm-debug.log
