@@ -1,0 +1,26 @@
+{
+
+  "repos": [
+    "strongloop/github-reporting-tool",
+    "strongloop-internal/scrum-nodeops",
+    "strongloop/strong-build",
+    "strongloop/strongloop",
+    "strongloop/strong-cluster-control",
+    "strongloop/strong-config-loader",
+    "strongloop/strong-control-channel",
+    "strongloop/strong-deploy",
+    "strongloop/strong-install",
+    "strongloop/strong-license",
+    "strongloop/strong-log-transformer",
+    "strongloop/strong-mesh-models",
+    "strongloop/strong-module-loader",
+    "strongloop/strong-pm",
+    "strongloop/strong-scheduler",
+    "strongloop/strong-service-install",
+    "strongloop/strong-service-upstart",
+    "strongloop/strong-statsd",
+    "strongloop/strong-supervisor",
+    "strongloop/strong-tools",
+    "strongloop/strong-arc",
+  ]
+}

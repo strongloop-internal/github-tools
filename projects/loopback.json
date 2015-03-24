@@ -53,6 +53,7 @@
   "repos": [
     "strongloop/loopback-messaging",
     "strongloop/strong-gateway",
+    "strongloop/strong-pubsub",
     "strongloop/strong-arc",
     "strongloop-internal/scrum-loopback",
     "strongloop/loopback",
