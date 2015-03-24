@@ -1,4 +1,5 @@
 node_modules
 *.log
 .auth.json
+_cache.db
 all*.json
