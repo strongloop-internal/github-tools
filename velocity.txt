@@ -25,6 +25,21 @@ TODO:
 	    at _makeTimerTimeout (timers.js:429:11)
 	    at Timer.unrefTimeout [as ontimeout] (timers.js:493:5)
 
+
+I was able to curl https://waffle.io/api/strongloop/loopback and
+https://waffle.io/api/strongloop/loopback/cards and get back JSON docs.  I
+suspect there may be other endpoints/resources...
+
+Hey Al, We don't have a public, versioned API, but you're welcome to give our
+not-quite-public API endpoints a go.
+
+- Find the project id from https://waffle.io/api/user/projects
+- Use this url to grab all the cards we
+  have:https://waffle.io/api/projects/:id/cards.
+
+Each sized card has a size property. And, the endpoint doesn't support
+filtering.
+
 - implement: https://developer.github.com/v3/#conditional-requests
   - will be much faster...
   - and won't hit the rate limit
