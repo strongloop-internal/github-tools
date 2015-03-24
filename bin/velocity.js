@@ -26,7 +26,7 @@ else
   report.onRepos([from], build);
 
 function build(err, issues) {
-  assert.ifError(err);
+  assert.ifError(err, 'collect failed');
 
   var totalCount = issues.length;
 
@@ -74,7 +74,8 @@ function build(err, issues) {
         .replace('omplete', '')
         .replace('ected', '')
         .replace('inc, ', '')
-        .replace('c, ', '');
+        .replace('c, ', '')
+        .replace('issue', 'iss');
     }),
   });
 
