@@ -26,7 +26,10 @@ else
   report.onRepos([from], build);
 
 function build(err, issues) {
-  assert.ifError(err, 'collect failed');
+  if (err) {
+    console.error('build error: %j, %j', err.repo, err);
+    process.exit(1);
+  }
 
   var totalCount = issues.length;
 
