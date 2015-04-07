@@ -3,7 +3,7 @@
 ### Installation
 
 ```
-$ git clone https://github.com/ritch/github-tools.git
+$ git clone https://github.com/strongloop/github-tools.git
 $ cd github-tools
 ```
 
