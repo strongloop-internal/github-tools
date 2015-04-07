@@ -16,7 +16,7 @@ Create `.auth.json` in the directory you will run `bin/sync` from:
 }
 ```
 
-## The "sync" script
+## bin/sync.js
 
 Synchronize labels and milestones across multiple products.
 
