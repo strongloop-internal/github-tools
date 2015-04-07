@@ -7,13 +7,16 @@ $ git clone https://github.com/strongloop/github-tools.git
 $ cd github-tools
 ```
 
-Create a .auth.json file in the directory you will run bin/sync from:
+Create `.auth.json` in the directory you will run `bin/sync` from:
 
 ```
-{ "username": "ghusername", "password": "ghpassword" }
+{
+  "username": "github-username",
+  "password": "github-password"
+}
 ```
 
-## sync
+## `sync`
 
 Synchronize labels and milestones across multiple products.
 
