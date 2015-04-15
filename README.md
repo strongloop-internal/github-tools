@@ -1,6 +1,6 @@
 # github-tools
 
-### Installation
+## Installation
 
 ```
 $ git clone https://github.com/strongloop/github-tools.git
@@ -33,7 +33,7 @@ The configuration file has three sections: `labels`, `milestones` and
 
 See [projects](projects) directory for existing configuration files.
 
-### labels
+### `labels`
 
 An object describing labels shared by all github repositories. Label name is
 the key, label color is the value. Use `null` value to delete a label from all
@@ -46,7 +46,7 @@ repositories.
 }
 ```
 
-### milestones
+### `milestones`
 
 An object describing milestones shared by all github repositories. Milestone
 title is used as the key.
@@ -63,7 +63,7 @@ Supported values:
 }
 ```
 
-### repos
+### `repos`
 
 An array of all repositories to synchronize.
 
