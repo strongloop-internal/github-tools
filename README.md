@@ -1,5 +1,7 @@
 # github-tools
 
+A set of scripts for automating GitHub things.
+
 ## Installation
 
 ```
