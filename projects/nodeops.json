@@ -7,6 +7,7 @@
     "#fib-8": "006b75",
     "#fib-13": "006b75",
 
+    "Arc bugfix release": "3319E7",
     "support": "3319E7",
     "#review": "ededed",
     "waiting": "F5ECCE",
@@ -17,6 +18,7 @@
 
   "milestones": {
     "#Phoenix": null,
+    "#PM-Docker": null,
     "#Mesh V1": null,
     "#Epic: Local-Start": null,
     "#Multi-app": null,
