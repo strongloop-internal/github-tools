@@ -46,9 +46,9 @@
   "repos": [
     "strongloop/strong-nginx-controller",
     "strongloop/github-reporting-tool",
-    "strongloop-forks/node-syslog",
+    "strongloop-forks/strong-fork-syslog",
     "strongloop-internal/scrum-nodeops",
-    "strongloop-forks/statsd",
+    "strongloop-forks/strong-fork-statsd",
     "strongloop/node-foreman",
     "strongloop/strong-agent-statsd",
     "strongloop/strong-build",
