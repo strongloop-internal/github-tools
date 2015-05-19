@@ -7,12 +7,14 @@
     "#fib-8": "006b75",
     "#fib-13": "006b75",
 
-    "Arc bugfix release": "3319E7",
+    "Slipped": "eb6420",
     "support": "3319E7",
     "#review": "ededed",
     "waiting": "F5ECCE",
     "doc": "d4c5f9",
     "Needs Doc": "d4c5f9",
+    "critical": "e11d21",
+    "major": "eb6420",
     "#wip": "ededed"
   },
 
