@@ -32,6 +32,7 @@
 
   "milestones": {
     "#Epic: Entitlement": "",
+    "#Epic: API Composition": "",
     "#Epic: Traces": "",
     "#Epic: Arc-QIP": "",
     "#Epic: Debugger": "",
@@ -50,6 +51,7 @@
     "#Epic: Gateway": "",
     "#Epic: Gateway V1": "",
     "#Epic: GoDaddy": "",
+    "#Epic: Cisco": "",
     "#Epic: Mini Mesh": "",
     "#Epic: Blip": ""
   },
