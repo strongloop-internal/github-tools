@@ -58,7 +58,6 @@
   },
 
   "repos": [
-    "strongloop/loopback-messaging",
     "strongloop/strong-gateway",
     "strongloop/strong-pubsub",
     "strongloop/strong-arc",
@@ -68,6 +67,8 @@
     "strongloop/loopback-boot",
     "strongloop/loopback-datasource-juggler",
     "strongloop/loopback-explorer",
+    "strongloop/strong-swagger-ui",
+    "strongloop/strong-swagger-js",
     "strongloop/loopback-testing",
     "strongloop/loopback-phase",
 
