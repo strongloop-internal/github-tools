@@ -101,7 +101,7 @@
 
     "strongloop/loopback-example-access-control",
     "strongloop/loopback-example-component",
-    "strongloop/loopback-example-full-stack",
+    "strongloop/loopback-example-offline-sync",
     "strongloop/loopback-example-angular-starter",
     "strongloop/loopback-example-relations-basic",
 
