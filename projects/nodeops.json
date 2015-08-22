@@ -22,6 +22,7 @@
   "milestones": {
     "#Phoenix": null,
     "#Epic: Arc-QIP": null,
+    "#Epic: Mesh-QIP": null,
     "#PM-Docker": null,
     "#Mesh V1": null,
     "#Epic: Local-Start": null,
@@ -34,6 +35,7 @@
     "#Epic: IOjs": "",
     "#Epic: Advisor": "12-02-01",
     "#Epic: Blip": "",
+    "#Epic: Cassandra": "",
     "#SchedulerMVP": "",
     "#Traces": "",
     "#CLA": "",
