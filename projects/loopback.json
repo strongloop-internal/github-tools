@@ -68,6 +68,7 @@
     "strongloop/loopback-boot",
     "strongloop/loopback-datasource-juggler",
     "strongloop/loopback-explorer",
+    "strongloop/loopback-swagger",
     "strongloop/strong-swagger-ui",
     "strongloop/strong-swagger-js",
     "strongloop/loopback-testing",
