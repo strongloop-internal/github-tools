@@ -20,8 +20,8 @@
   },
 
   "milestones": {
-    "#Phoenix": null,
     "#Epic: Arc-QIP": null,
+    "#DevOps": null,
     "#Epic: Mesh-QIP": null,
     "#PM-Docker": null,
     "#Mesh V1": null,
