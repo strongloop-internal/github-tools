@@ -3,3 +3,4 @@ node_modules
 .auth.json
 _cache.db
 all*.json
+config.json
