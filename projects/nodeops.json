@@ -45,6 +45,7 @@
     "#Hosted Mesh": "",
     "#Mini Mesh": "",
     "#strong-pm.io": "",
+    "#E-Registry": "",
     "#Entitlement": "",
     "SASS": null 
   },
@@ -83,6 +84,7 @@
     "strongloop/strong-store-cluster",
     "strongloop/strong-supervisor",
     "strongloop/strong-tools",
+    "strongloop/tintin",
     "strongloop/zone"
   ]
 }
