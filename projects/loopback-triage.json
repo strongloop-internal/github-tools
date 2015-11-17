@@ -1,0 +1,33 @@
+{
+  "labels": {
+    "bug": "009800",
+    "critical": "e11d21",
+    "doc": "207de5",
+    "duplicate": "fbca04",
+    "enhancement": null,
+    "feature": "009800",
+    "help wanted": null,
+    "invalid": null,
+    "major": "f7c6c7",
+    "question": "5319e7",
+    "triage": "eb6420",
+    "waiting": "fbca04",
+    "wontfix": null,
+    "wrong-repo": "e11d21"
+  },
+  "milestones": {},
+  "repos": [
+    "strongloop/angular-live-set",
+    "strongloop/loopback-acl-route",
+    "strongloop/loopback-connector-mysql",
+    "strongloop/loopback-connector-postgresql",
+    "strongloop/loopback-connector-sqlite3",
+    "strongloop/loopback-example-database",
+    "strongloop/loopback-example-isomorphic",
+    "strongloop/loopback-example-middleware",
+    "strongloop/loopback-example-operation-hooks",
+    "strongloop/loopback-example-passport",
+    "strongloop/loopback-example-relations",
+    "strongloop/loopback-example-user-management"
+  ]
+}
