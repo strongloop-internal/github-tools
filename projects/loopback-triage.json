@@ -19,6 +19,7 @@
   "milestones": {},
   "repos": [
     "strongloop/angular-live-set",
+    "strongloop/angular-live-set-example",
     "strongloop/generator-loopback",
     "strongloop/grunt-loopback-sdk-angular",
     "strongloop/gulp-loopback-sdk-angular",
