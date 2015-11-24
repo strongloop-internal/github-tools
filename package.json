@@ -1,6 +1,6 @@
 {
   "name": "github-tools",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "A set of scripts for automating GitHub things.",
   "bin": {
     "sync": "bin/sync.js"
@@ -25,5 +25,5 @@
     "test": "tap test/test-*.js"
   },
   "author": "engineering@strongloop.com",
-  "license": "ISC"
+  "license": "SEE LICENSE IN LICENSE.md"
 }
