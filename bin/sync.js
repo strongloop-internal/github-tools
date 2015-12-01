@@ -116,6 +116,11 @@ function syncRepositoryLabels(repoOwner, repoName, labelDefinitions, done) {
             };
           };
 
+          if (!Array.isArray(existingLabels)) {
+            var err = new Error('Unexpected result - not an array');
+            return cb('getLabels')(err);
+          }
+
           if (!ghLabel.color) {
             // remove the label
             if (containsName(existingLabels, labelName)) {
@@ -168,6 +173,11 @@ function syncRepositoryMilestones(repoOwner, repoName, milestoneDefs, done) {
             next();
           };
         };
+
+        if (!Array.isArray(githubMilestones)) {
+          var err = new Error('Unexpected result - not an array');
+          return cb('getAllMilestones')(err);
+        }
 
         var milestone = githubMilestones.filter(function(it) {
           return it.title === milestoneTitle;
