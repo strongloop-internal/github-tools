@@ -1,0 +1,33 @@
+%MAIN% report <scrum> [options]
+%MAIN% help
+%MAIN% get-projects
+%MAIN% get-cards <scrum>
+
+report is the primary interface, it will print scrum reports.
+
+help is the default command, it prints a usage message.
+
+Options:
+  -c,--closed       Report only closed issues, not in-progress or backlogged.
+  -i,--issues       Print the repo/number of each issue after the title.
+  -f,--from N       Report from sprint N onwards, instead of current sprint.
+  -m,--milestone M  Limit report to issues from milestone M (will also include
+                    the backlog for this milestone).
+
+
+Authentication:
+
+Either create a `.auth.json` file in the CWD with your github username/password:
+
+    { "username": "...", "password": "..." }
+
+Or provide `GITHUB_USERNAME` and `GITHUB_PASSWORD` in the environment.
+
+
+Maintenance:
+
+get-projects needs to be done to update the local list of source repos for each
+of the scrum boards.
+
+get-cards needs to be done to update the local list of waffle size estimates
+for issues. It should probably be done after sprint planning.

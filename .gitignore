@@ -1,6 +1,8 @@
-node_modules
 *.log
 .auth.json
+.nyc_output
 _cache.db
 all*.json
 config.json
+coverage
+node_modules
