@@ -26,6 +26,7 @@
     "pre-test": "e11d21",
     "#review": "ededed",
     "#wip": "ededed",
+    "tob-4-weeks": "5319e7",
 
     "#community contribution": "D4AF37"
   },
@@ -68,7 +69,7 @@
     "strongloop/strong-remoting",
     "strongloop/loopback-boot",
     "strongloop/loopback-datasource-juggler",
-    "strongloop/loopback-explorer",
+    "strongloop/loopback-component-explorer",
     "strongloop/loopback-swagger",
     "strongloop/strong-swagger-ui",
     "strongloop/strong-swagger-js",
