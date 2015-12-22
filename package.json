@@ -23,7 +23,7 @@
   },
   "devDependencies": {
     "eslint": "^1.10.3",
-    "eslint-config-strongloop": "^1.0.7",
+    "eslint-config-strongloop": "^1.x",
     "tap": "^2.x"
   },
   "scripts": {
