@@ -32,6 +32,15 @@
   },
 
   "milestones": {
+    "#Epic: Swagger Routing": "",
+    "#Epic: Coercion Cleanup": "",
+    "#Epic: Production Error Handler": "",
+    "#Epic: Composability": "",
+    "#Epic: ReplaceOrCreate": "",
+    "#Epic: Fast Router": "",
+    "#Epic: Juggler Cleanup": "",
+    "#Epic: Compat Flags Cleanup": "",
+
     "#Epic: Entitlement": "",
     "#Epic: Dev Portal": "",
     "#Epic: API Composition": "",
