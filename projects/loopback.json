@@ -73,7 +73,6 @@
     "strongloop/loopback-swagger",
     "strongloop/strong-swagger-ui",
     "strongloop/strong-swagger-js",
-    "strongloop/loopback-testing",
     "strongloop/loopback-phase",
 
     "strongloop/loopback-sdk-angular",
