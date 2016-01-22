@@ -130,7 +130,6 @@
   },
   "repos": [
     "strongloop/angular-live-set",
-    "strongloop/angular-live-set-example",
     "strongloop/eslint-config-loopback",
     "strongloop/generator-loopback",
     "strongloop/grunt-loopback-sdk-angular",
@@ -162,6 +161,7 @@
     "strongloop/loopback-example",
     "strongloop/loopback-example-access-control",
     "strongloop/loopback-example-angular",
+    "strongloop/loopback-example-angular-live-set",
     "strongloop/loopback-example-app-logic",
     "strongloop/loopback-example-database",
     "strongloop/loopback-example-isomorphic",
