@@ -158,6 +158,7 @@
     "strongloop/loopback-connector-rest",
     "strongloop/loopback-connector-soap",
     "strongloop/loopback-connector-sqlite3",
+    "strongloop/loopback-connector-swagger",
     "strongloop/loopback-datasource-juggler",
     "strongloop/loopback-example",
     "strongloop/loopback-example-access-control",
