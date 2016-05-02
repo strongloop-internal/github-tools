@@ -196,6 +196,7 @@
     "strongloop/loopback-triage",
     "strongloop/loopback-workspace",
     "strongloop/strong-arc",
+    "strongloop/strong-error-handler",
     "strongloop/strong-pubsub",
     "strongloop/strong-remoting",
     "strongloop/strong-swagger-ui",
