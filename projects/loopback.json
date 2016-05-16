@@ -91,6 +91,7 @@
     "wont-fix": "eeeeee"
   },
   "milestones": {
+    "#Epic: 3.0 in APIC": "",
     "#Epic: Swagger Routing": "",
     "#Epic: Coercion Cleanup": "",
     "#Epic: Production Error Handler": "",
