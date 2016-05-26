@@ -91,6 +91,9 @@
     "wont-fix": "eeeeee"
   },
   "milestones": {
+    "#Epic: APIC Logger": "2016-06-30",
+    "#Epic: Globalization": "2016-08-31",
+    "#Epic: SOAP discovery": "2016-07-31",
     "#Epic: 3.0 in APIC": "",
     "#Epic: Swagger Routing": "",
     "#Epic: Coercion Cleanup": "",
