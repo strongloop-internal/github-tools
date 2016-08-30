@@ -123,7 +123,7 @@ function syncRepositoryLabels(repoOwner, repoName, labelDefinitions, done) {
 
           if (!ghLabel.color) {
             // remove the label
-            if (containsName(existingLabels, labelName)) {
+            if (findByName(existingLabels, labelName)) {
               console.log('delete label %j', ghLabel);
               github.issues.deleteLabel(ghLabel, cb('delete'));
             } else {
@@ -131,12 +131,16 @@ function syncRepositoryLabels(repoOwner, repoName, labelDefinitions, done) {
             }
           } else {
             // create/update the label
-            if (containsName(existingLabels, labelName)) {
+            var label = findByName(existingLabels, labelName);
+            if (!label) {
+              console.log('create label %j', ghLabel);
+              github.issues.createLabel(ghLabel, cb('create'));
+            } else if (label.color !== ghLabel.color) {
               console.log('update label %j', ghLabel);
               github.issues.updateLabel(ghLabel, cb('update'));
             } else {
-              console.log('create label %j', ghLabel);
-              github.issues.createLabel(ghLabel, cb('create'));
+              console.log('skip up-to-date label %j', ghLabel);
+              next();
             }
           }
         },
@@ -145,7 +149,7 @@ function syncRepositoryLabels(repoOwner, repoName, labelDefinitions, done) {
 }
 
 function syncRepositoryMilestones(repoOwner, repoName, milestoneDefs, done) {
-  github.issues.getAllMilestones({
+  github.issues.getMilestones({
     per_page: 100,
     user: repoOwner,
     repo: repoName
@@ -239,6 +243,6 @@ function syncRepositoryMilestones(repoOwner, repoName, milestoneDefs, done) {
   });
 }
 
-function containsName(list, name) {
-  return list.some(function(it) { return it.name === name; });
+function findByName(list, name) {
+  return list.filter(function(it) { return it.name === name; })[0];
 }
