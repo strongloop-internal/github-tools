@@ -209,15 +209,17 @@ function syncRepositoryMilestones(repoOwner, repoName, milestoneDefs, done) {
               milestone.state = 'closed';
               github.issues.updateMilestone(milestone, cb('close'));
             } else {
-              console.log('skip already closed milestone %j', milestone);
+              console.log('skip already closed milestone %j', milestoneTitle);
               next();
             }
           } else {
-            console.log('do not create a closed milestone %j', milestone);
+            console.log('do not create a closed milestone %j', milestoneTitle);
             next();
           }
         } else {
-          var dueTs = definition + 'T07:00:00Z'; // Midnight pacific time
+          var dueTs = definition ?
+            definition + 'T07:00:00Z' : // Midnight pacific time
+            dueTs;
           if (milestone) {
             if (milestone.due_on && milestone.due_on.substr(0, definition.length) == definition) {
               console.log('skip up-to-date milestone', milestone);
