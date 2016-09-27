@@ -94,21 +94,22 @@
     "wont-fix": "eeeeee"
   },
   "milestones": {
+    "#Epic: Shared CLI Facade": "",
     "#Epic: Workspace Refactor": "2016-10-30",
     "#Epic: Checkpoint Roadmap": "",
-    "#Epic: APIC Editor": "",
+    "#Epic: APIC Editor": false,
     "#Epic: APIC Logger": "",
     "#Epic: Globalization": "2016-08-31",
     "#Epic: SOAP discovery": "2016-07-31",
     "#Epic: 3.0 in APIC": "",
     "#Epic: Swagger Routing": "",
-    "#Epic: Coercion Cleanup": "",
+    "#Epic: Coercion Cleanup": false,
     "#Epic: Production Error Handler": "",
     "#Epic: Composability": false,
     "#Epic: ReplaceOrCreate": "",
     "#Epic: Fast Router": "",
     "#Epic: Juggler Cleanup": "",
-    "#Epic: Compat Flags Cleanup": "",
+    "#Epic: Compat Flags Cleanup": false,
     "#Epic: ObjectId Coercion": "",
     "#Epic: Multi-Tenancy": "",
     "#Epic: MobileFirst": false,
@@ -140,6 +141,9 @@
     "#Epic: Blip": false
   },
   "repos": [
+    "strongloop-internal/apidocs.strongloop.com",
+    "strongloop-internal/scrum-loopback",
+    "strongloop-internal/strong-docs",
     "strongloop/angular-live-set",
     "strongloop/eslint-config-loopback",
     "strongloop/generator-loopback",
@@ -156,7 +160,6 @@
     "strongloop/loopback-component-push",
     "strongloop/loopback-component-storage",
     "strongloop/loopback-connector",
-    "strongloop/loopback-connector-atg",
     "strongloop/loopback-connector-jsonrpc",
     "strongloop/loopback-connector-mongodb",
     "strongloop/loopback-connector-mssql",
@@ -195,7 +198,6 @@
     "strongloop/loopback-oracle-builder",
     "strongloop/loopback-oracle-installer",
     "strongloop/loopback-phase",
-    "strongloop/loopback-policy",
     "strongloop/loopback-sandbox",
     "strongloop/loopback-sdk-android",
     "strongloop/loopback-sdk-angular",
@@ -206,14 +208,12 @@
     "strongloop/loopback-swagger",
     "strongloop/loopback-triage",
     "strongloop/loopback-workspace",
+    "strongloop/loopback.io",
     "strongloop/strong-arc",
     "strongloop/strong-error-handler",
     "strongloop/strong-pubsub",
     "strongloop/strong-remoting",
-    "strongloop/strong-swagger-ui",
     "strongloop/strong-swagger-js",
-    "strongloop-internal/apidocs.strongloop.com",
-    "strongloop-internal/scrum-loopback",
-    "strongloop-internal/strong-docs"
+    "strongloop/strong-swagger-ui"
   ]
 }
