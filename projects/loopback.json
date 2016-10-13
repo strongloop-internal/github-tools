@@ -94,6 +94,7 @@
     "wont-fix": "eeeeee"
   },
   "milestones": {
+    "#Epic: Context Propagation": "",
     "#Epic: Shared CLI Facade": "",
     "#Epic: Workspace Refactor": "2016-10-30",
     "#Epic: Checkpoint Roadmap": "",
@@ -161,6 +162,7 @@
     "strongloop/loopback-component-storage",
     "strongloop/loopback-connector",
     "strongloop/loopback-connector-jsonrpc",
+    "strongloop/loopback-connector-kv-redis",
     "strongloop/loopback-connector-mongodb",
     "strongloop/loopback-connector-mssql",
     "strongloop/loopback-connector-mysql",
