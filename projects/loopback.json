@@ -177,6 +177,12 @@
     "
   },
   "milestones": {
+    "Sprint 26": "2017-01-09",
+    "Sprint 27": "2017-01-23",
+    "Sprint 28": "2017-02-06", 
+    "Sprint 29": "2017-02-20",
+    "Sprint 30": "2017-03-06", 
+    "Sprint 31": "2017-03-20"
   },
   "repos": [
     "strongloop-internal/apidocs.strongloop.com",
