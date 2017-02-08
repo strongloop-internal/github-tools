@@ -65,14 +65,10 @@
     "team-asteroid": "c5def5"
   },
   "milestones": {
-     "Sprint 26": "2017-01-09",
-     "Sprint 27": "2017-01-23",
-     "Sprint 28": "2017-02-06", 
-     "Sprint 29": "2017-02-20",
-     "Sprint 30": "2017-03-06", 
-     "Sprint 31": "2017-03-20"
+     "Sprint 40": "2017-07-24"
   },
   "repos": [
+    "ibm-apiconnect/getting-started",
     "strongloop-internal/apidocs.strongloop.com",
     "strongloop-internal/scrum-loopback",
     "strongloop-internal/strong-docs",
@@ -80,7 +76,12 @@
     "strongloop-internal/scrum-apex",
     "strongloop-internal/scrum-asteroid",
     "strongloop-internal/loopback-knowledge-base",
+    "strongloop/strongloop-config",
+    "strongloop/strong-github-api",
+    "strongloop/loopback-cli",
+    "strongloop/loopback-next",
     "strongloop/angular-live-set",
+    "strongloop/strong-cached-install",
     "strongloop/eslint-config-loopback",
     "strongloop/generator-loopback",
     "strongloop/grunt-loopback-sdk-angular",
@@ -89,6 +90,7 @@
     "strongloop/loopback-android-getting-started",
     "strongloop/loopback-api-definition",
     "strongloop/loopback-boot",
+    "strongloop/loopback-logger",
     "strongloop/loopback-component-explorer",
     "strongloop/loopback-component-oauth2",
     "strongloop/loopback-component-passport",
@@ -140,6 +142,7 @@
     "strongloop/loopback-model",
     "strongloop/loopback-model-persistence",
     "strongloop/loopback-multitenancy",
+    "strongloop/loopback-multitenant-poc",
     "strongloop/loopback-oracle-builder",
     "strongloop/loopback-oracle-installer",
     "strongloop/loopback-phase",
