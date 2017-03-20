@@ -18,6 +18,18 @@ Create `.auth.json` in the directory you will run `bin/sync` from:
 }
 ```
 
+### GitHub Enterprise
+
+To connect to a GHE you will need to add the GHE host to the `.auth.json` file above:
+
+```
+{
+  "username": "github-username",
+  "password": "github-password",
+  "enterprise_host": "github.your-GHE-company.com"
+}
+```
+
 ## bin/sync.js
 
 Synchronize labels and milestones across multiple products.
