@@ -22,10 +22,12 @@ Create `.auth.json` in the directory you will run `bin/sync` from:
 
 To connect to a GHE you will need to add the GHE host to the `.auth.json` file above:
 
+If no enterprise host is specified then the tool will default to `api.github.com`.
+
 ```
 {
   "username": "github-username",
-  "password": "github-password",
+  "password": "github-auth-token",
   "enterprise_host": "github.your-GHE-company.com"
 }
 ```
